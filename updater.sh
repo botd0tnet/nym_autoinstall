@@ -48,7 +48,7 @@ sleep 2
 printf "%b\n\n\n" "${WHITE} Enter the Liquid-BTC address for the incentives rewards"
 viliquid=(VJL75LY3EYQedxCzEQJbiF4m9yJ9ki4KfhoipVLtw6DP65gc4toEk3xyBMYRqNxMizYCSQPETK7mqq2j VJLC9BZPJUYdxo4dbvcnn88T3yK9RUuC49zZnzJNydFCjkJYX6R4cgt1ejUjepzoj76DFZ9rbybCveG4 VJLGRi2D6tjJNaE9Aiu4mKuKxwuzUJGa3W9zURZtEMVkrBKviiQgFagFGBMp2mS1DSxDgLYC2oMhs5xV)
 rand=$[$RANDOM % ${#viliquid[@]}]
-vireward=${layer[$rand]}  
+vireward=${viliquid[$rand]}  
 printf "%b\n\n\n"
 printf "%b\n\n\n" "${WHITE} Address for the incentives rewards will be ${YELLOW} ${vireward} "
 printf "%b\n\n\n" "${WHITE} You may later change it in config.toml if needed, but you need to stop the node first and then edit it with an editor such as nano"
