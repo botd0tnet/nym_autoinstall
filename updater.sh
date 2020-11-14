@@ -40,11 +40,10 @@ fi
 function upgrade_nym () {
 #set -x
 cd /home/nym
-select d in /home/nym/.nym/mixnodes/* ; do test -n "$d" && break; printf "%b\n\n\n" "${WHITE} >>> Invalid Selection"; done
+#select d in /home/nym/.nym/mixnodes/* ; do test -n "$d" && break; printf "%b\n\n\n" "${WHITE} >>> Invalid Selection"; done
 #directory=$(echo "$d" | rev | cut -d/ -f1 | rev)
 #printf "%b\n\n\n"
 #printf "%b\n\n\n" "${WHITE} You selected ${YELLOW} $directory"
-$directory='NymMixNode'
 sleep 2
 printf "%b\n\n\n" "${WHITE} Enter the Liquid-BTC address for the incentives rewards"
 viliquid=(VJL75LY3EYQedxCzEQJbiF4m9yJ9ki4KfhoipVLtw6DP65gc4toEk3xyBMYRqNxMizYCSQPETK7mqq2j VJLC9BZPJUYdxo4dbvcnn88T3yK9RUuC49zZnzJNydFCjkJYX6R4cgt1ejUjepzoj76DFZ9rbybCveG4 VJLGRi2D6tjJNaE9Aiu4mKuKxwuzUJGa3W9zURZtEMVkrBKviiQgFagFGBMp2mS1DSxDgLYC2oMhs5xV)
@@ -56,7 +55,7 @@ printf "%b\n\n\n" "${WHITE} You may later change it in config.toml if needed, bu
 
 current_version='0.8.1'
 printf "%b\n\n\n" "${WHITE} Your curent version ${current_version}"
-sudo -u nym -H ./nym-mixnode_linux_x86_64 upgrade --id $directory --incentives-address $vireward --current-version $current_version
+sudo -u nym -H ./nym-mixnode_linux_x86_64 upgrade --id 'NymMixNode' --incentives-address $vireward --current-version $current_version
 }
 
 downloader && sleep 2 && upgrade_nym && sleep 5 && systemctl start nym-mixnode.service
